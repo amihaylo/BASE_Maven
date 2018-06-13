@@ -11,4 +11,4 @@ compile:
 	docker run -it --rm -v $(PWD)/$(APP_NAME):/home/$(APP_NAME) -v $(PWD)/libs:/home/$(APP_NAME)/libs -v $(PWD)/.m2:/root/.m2 -w /home/$(APP_NAME) $(DOCKER_IMAGE) mvn package
 
 run:
-	docker run -it --rm -v $(PWD)/$(APP_NAME):/home/$(APP_NAME) -w /home/$(APP_NAME) $(DOCKER_IMAGE) java -cp target/$(APP_NAME)-1.0-SNAPSHOT.jar $(APP_PACKAGE).App
+	docker run -it --rm -v $(PWD)/$(APP_NAME):/home/$(APP_NAME) -v $(PWD)/libs:/home/$(APP_NAME)/libs -w /home/$(APP_NAME) $(DOCKER_IMAGE) java -cp target/$(APP_NAME)-1.0-SNAPSHOT.jar:libs/* $(APP_PACKAGE).App
